@@ -1,0 +1,11 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-3" *ngFor="let produit of listProduct; let i = index">
+            <div class="card-body">
+                <h5 class="card-title">{{ produit.libelle }}</h5>
+                <p class="card-text">code: {{produit.code}}, prixunitaire: {{ produit.prixunitaire }}, TVA: {{ produit.tauxTva }},</p>
+                <a class="btn btn-primary" (click)="getNbProductsByLibelle(produit.libelle)">like</a>
+            </div>
+        </div>
+    </div>
+</div>

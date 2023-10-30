@@ -1,0 +1,64 @@
+<input type="text" [(ngModel)]="searchItem">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<div class="container">
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="main-box clearfix">
+				<div class="table-responsive">
+					<table class="table user-list">
+						<thead>
+							<tr>
+								<th><span>User</span></th>
+								<th><span>Created</span></th>
+								<th class="text-center"><span>Status</span></th>
+								<th><span>Email</span></th>
+								<th>&nbsp;</th>
+							</tr>
+						</thead>
+						<tbody *ngFor="let item of list">
+							<tr *ngIf="item.accountCategory === searchItem || !searchItem">
+								<td>
+									<img src="{{item.picture}}" alt="">
+									<a href="#" class="user-link">{{item.firstName}} {{item.lastName}}</a>
+									<span class="user-subhead">{{item.accountCategory}}</span>
+								</td>
+								<td>
+									{{item.birthDate}}
+								</td>
+								<td class="text-center">
+									<span class="label label-default">Inactive</span>
+								</td>
+								<td>
+									<a href="#">{{item.email}}</a>
+								</td>
+								<td style="width: 5%;">
+									<div>
+										<!--<input [type]="var1" value="Delete" class="btn btn-danger"
+										[disabled]="item.accountCategory === 'Admin'" (click)="deleteUser(item)">-->
+										<input [type]="var1" value="Delete" class="btn btn-danger"
+										[disabled]="item.accountCategory === 'Admin'" (click)="deleteUser(item.id.toString())">
+									</div>
+									<div>
+										<button [routerLink]="['/editUser',item.id]">Edit</button>
+									</div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<ul class="pagination pull-right">
+					<li><a href="#"><i class="fa fa-chevron-left"></i></a></li>
+					<li><a href="#">1</a></li>
+					<li><a href="#">2</a></li>
+					<li><a href="#">3</a></li>
+					<li><a href="#">4</a></li>
+					<li><a href="#">5</a></li>
+					<li><a href="#"><i class="fa fa-chevron-right"></i></a></li>
+				</ul>
+			</div>
+			<button><a routerLink="addUser">add new user1</a></button>
+			<button (click)="add()">add new user2</button>
+			<router-outlet></router-outlet>
+		</div>
+	</div>
+</div>

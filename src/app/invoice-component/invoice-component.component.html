@@ -1,0 +1,13 @@
+<div *ngIf="active===false">
+    <p>{{errorMessage }}</p>
+</div>
+<div *ngFor="let invoice of list">
+    <div *ngIf="invoice.idFacture===id && active===true">
+      {{invoice.idFacture}}
+      {{invoice.montantRemise}}
+      {{invoice.montantFacture}}
+      {{invoice.dateFacture}}
+      {{invoice.active}}
+    </div>
+</div>
+<button (click)="goBack()">Retour</button>

@@ -1,0 +1,50 @@
+<h2> Add New User</h2>
+
+<!--<button (click)="add()">Add</button>-->
+<form #addForm="ngForm" (ngSubmit)="add(addForm)" >
+    <div class="mb-3">
+      <label for="fn">First name</label>
+      <input type="text" class="form-control" id="fn" name="fn" ngModel required  #fn="ngModel" minlength="3" pattern="[a-zA-Z]*">
+      <small class="text text-danger" *ngIf="fn?.errors?.['required'] && fn.touched">Name is required</small>
+      <small class="text text-danger" *ngIf="fn?.errors?.['minlength'] && fn.touched">Name don't respect min length</small>
+    </div>
+    <div class="mb-3">
+        <label for="ln">Last name</label>
+        <input type="text" class="form-control" id="ln" name="ln" ngModel required  #ln="ngModel" minlength="3" pattern="[a-zA-Z]*">
+        <small class="text text-danger" *ngIf="ln?.errors?.['required'] && ln.touched">Name is required</small>
+        <small class="text text-danger" *ngIf="ln?.errors?.['minlength'] && ln.touched">Name don't respect min length</small>
+    </div>
+    <div class="mb-3">
+      <label for="bd">BirthDate</label>
+      <input type="date" class="form-control" id="bd" name="bd" ngModel required  #bd="ngModel" >
+      <small class="text text-danger" *ngIf="bd?.errors?.['required'] && bd.touched">Birth Date is required</small>
+      
+    </div>
+    
+    <div class="mb-3">
+      <label for="em">Email</label>
+      <input type="email" class="form-control" id="em" name="em" ngModel required  #em="ngModel" minlength="3" pattern="^[a-zA-Z0-9._-]+@gmail.com">
+      <small class="text text-danger" *ngIf="em?.errors?.['required'] && em.touched ">Email is required</small>
+      <small class="text text-danger" *ngIf="em?.errors?.['minlength'] && em.touched">Email don't respect min length</small>
+      <small class="text text-danger" *ngIf="em?.errors?.['pattern'] && em.touched">Email invalid</small>
+    </div>
+    <div class="mb-3">
+      <label for="ps">Password</label>
+      <input type="password" class="form-control" id="ps" name="ps" ngModel required  #ps="ngModel" minlength="8" pattern="^[a-zA-Z0-9]{8,}?">
+      <small class="text text-danger" *ngIf="ps?.errors?.['required'] && ps.touched">PassWord is required</small>
+      <small class="text text-danger" *ngIf="ps?.errors?.['pattern'] && ps.touched">PassWord don't respect constraint</small>
+    </div>
+    <div class="mb-3">
+      <label for="pf">Profession</label>
+      <input type="text" class="form-control" id="pf" name="pf" ngModel required  #pf="ngModel" minlength="3">
+      <small class="text text-danger" *ngIf="pf?.errors?.['required'] && pf.touched">Profession is required</small>
+      <small class="text text-danger" *ngIf="pf?.errors?.['minlength'] && pf.touched">Profession don't respect min length</small>
+    </div>
+    <div class="mb-3">
+      <label for="ct">Customer</label>
+      <input type="text" value="Customer" placeholder="Customer" class="form-control" id="ct" name="ct" ngModel   #ct="ngModel" readonly>
+      <small class="text text-danger" *ngIf="ct?.errors?.['readonly'] && ct.touched">Customer is default value</small>
+    </div>
+    
+    <button type="submit" class="btn btn-primary" [disabled]="addForm.invalid" >Save</button>
+  </form>
